@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Kajal",
+        "age": 19,
+        "email": "kajalprajapati7451@gmail.com",
+        "pin": "1234",
+        "account no.": 1234,
+        "balance": 0
+    },
+    {
+        "name": "Nitesh",
+        "age": 19,
+        "email": "Nitesh@gmail.com",
+        "pin": 1819,
+        "account no.": "9J7rZ2$!*",
+        "balance": 9000
+    },
+    {
+        "name": "Nitesh",
+        "age": 19,
+        "email": "Nitesh@gmail.com",
+        "pin": 1819,
+        "account no.": "0H^^S!I44",
+        "balance": 1000.0
+    }
+]
