@@ -2,34 +2,42 @@
 
 This is my **first Python project** as a student.
 
-I built a simple Bank Management System while learning Python and then created a basic web interface using Streamlit.
+I built a simple Bank Management System while learning Python and then created an interactive web interface using Streamlit.
 
 ## 🚀 Features
 
-* Create a bank account
-* Generate account number
-* Deposit money
-* Withdraw money
-* View account details
-* Update account details
-* Delete account
-* Store data using JSON
-* Input validation
-* Error handling
-* Streamlit web interface
+- Create a bank account
+- Generate a unique account number
+- Login using account number and PIN
+- Deposit money
+- Withdraw money
+- View account details
+- Update account details
+- Change PIN
+- Delete account
+- Store data using JSON
+- Input validation
+- Error handling
+- Interactive Streamlit web interface
 
 ## 🛠️ Technologies Used
 
-* Python
-* Streamlit
-* JSON
-* OOP
-* File Handling
+- Python
+- Streamlit
+- JSON
+- Object-Oriented Programming (OOP)
+- File Handling
+- Git & GitHub
 
 ## 📂 Project Structure
 
 ```text
 BANK-MANAGEMENT-SYSTEM/
+│
+├── app.py
+├── main.py
+├── .gitignore
+└── README.md
 │
 ├── app.py
 ├── bank.py
