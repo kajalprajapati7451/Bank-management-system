@@ -74,7 +74,7 @@ This project helped me practice:
 * Input Validation
 * Basic application development
 * Streamlit
-
+🚀 **Live Demo:** https://nova-bank-system.streamlit.app/
 Since this is my first Python project, I plan to improve it further by adding more features and making the application more advanced.
 
 ---
