@@ -408,38 +408,42 @@ elif option == "📝 Create Account":
                 pin=int(pin)
             )
 
-            if success:
+                       if success:
 
                 st.success(
                     "🎉 Account created successfully!"
                 )
 
-               st.markdown(
-    f"""
-    <div class="success-card">
+                st.markdown(
+                    f"""
+                    <div class="account-card">
 
-        <small>ACCOUNT CREATED</small>
+                        <small>ACCOUNT CREATED</small>
 
-        <h2>Welcome, {name} 👋</h2>
+                        <h2>Welcome, {name} 👋</h2>
 
-        <small>YOUR ACCOUNT NUMBER</small>
+                        <small>YOUR ACCOUNT NUMBER</small>
 
-        <div class="account-number">
-            {result}
-        </div>
+                        <div class="account-number">
+                            {result}
+                        </div>
 
-        <small>INITIAL BALANCE</small>
+                        <small>INITIAL BALANCE</small>
 
-        <h2>₹0.00</h2>
+                        <h2>₹0.00</h2>
 
-        <small>
-            ⚠️ Please save your account number safely.
-        </small>
+                        <small>
+                            ⚠️ Please save your account number safely.
+                        </small>
 
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+            else:
+
+                st.error(result)
             else:
 
                 st.error(result)
