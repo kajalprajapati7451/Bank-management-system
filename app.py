@@ -21,40 +21,68 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* ---------- MAIN BACKGROUND ---------- */
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
 .stApp {
     background: #f5f7fb;
 }
 
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
 
-/* ---------- SIDEBAR ---------- */
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
 
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #0f172a, #172554);
+    background: linear-gradient(180deg, #0f172a 0%, #172554 100%);
 }
 
 section[data-testid="stSidebar"] * {
     color: white !important;
 }
 
+section[data-testid="stSidebar"] .stRadio label {
+    padding: 8px 5px;
+    border-radius: 8px;
+}
 
-/* ---------- HERO ---------- */
+section[data-testid="stSidebar"] hr {
+    border-color: rgba(255,255,255,0.15);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero {
-    background: linear-gradient(135deg, #0f172a, #2563eb);
-    padding: 45px 30px;
-    border-radius: 25px;
+    background:
+        radial-gradient(circle at top right,
+        rgba(96,165,250,0.35),
+        transparent 35%),
+        linear-gradient(135deg, #0f172a, #1d4ed8);
+
+    padding: 48px 30px;
+    border-radius: 28px;
     text-align: center;
     color: white;
-    margin-bottom: 30px;
-    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.25);
+    margin-bottom: 32px;
+
+    box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.18);
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 800;
     margin: 0;
+    letter-spacing: -1px;
 }
 
 .hero p {
@@ -64,16 +92,18 @@ section[data-testid="stSidebar"] * {
 }
 
 .hero span {
-    font-size: 14px;
-    opacity: 0.75;
+    font-size: 13px;
+    opacity: 0.7;
 }
 
 
-/* ---------- SECTION TITLE ---------- */
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
 
 .section-title {
     font-size: 32px;
-    font-weight: 750;
+    font-weight: 800;
     color: #0f172a;
     margin-bottom: 5px;
 }
@@ -85,25 +115,39 @@ section[data-testid="stSidebar"] * {
 }
 
 
-/* ---------- FEATURE CARDS ---------- */
+/* =========================================================
+   FEATURE CARDS
+   ========================================================= */
 
 .card {
     background: white;
     padding: 28px;
-    border-radius: 20px;
-    min-height: 190px;
+    border-radius: 22px;
+    min-height: 195px;
+
     border: 1px solid #e2e8f0;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.07);
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.07);
+
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.12);
 }
 
 .card h2 {
-    font-size: 35px;
+    font-size: 36px;
     margin: 0;
 }
 
 .card h3 {
     color: #0f172a;
-    margin: 10px 0;
+    margin: 12px 0 8px;
 }
 
 .card p {
@@ -112,79 +156,332 @@ section[data-testid="stSidebar"] * {
 }
 
 
-/* ---------- ACCOUNT CARD ---------- */
+/* =========================================================
+   ACCOUNT CARD
+   ========================================================= */
 
 .account-card {
-    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(96,165,250,0.30),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a 0%,
+            #1e3a8a 55%,
+            #2563eb 100%
+        );
+
     color: white;
-    padding: 32px;
-    border-radius: 22px;
-    margin-top: 25px;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+
+    padding: 34px;
+
+    border-radius: 26px;
+
+    margin-top: 28px;
+
+    min-height: 300px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.22);
 }
+
+
+/* decorative circle */
+
+.account-card::after {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    right: -65px;
+    bottom: -70px;
+
+    border: 35px solid rgba(255,255,255,0.08);
+}
+
+
+/* account labels */
 
 .account-card small {
-    opacity: 0.7;
-    letter-spacing: 1px;
+    display: block;
+
+    color: rgba(255,255,255,0.68);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    margin-top: 4px;
 }
+
+
+/* holder name */
 
 .account-card h2 {
-    margin-top: 8px;
+    margin: 7px 0 25px;
+
+    font-size: 27px;
+
+    font-weight: 700;
 }
+
+
+/* account number box */
 
 .account-number {
-    font-size: 29px;
+    display: inline-block;
+
+    background: rgba(255,255,255,0.10);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    font-size: 24px;
+
     font-weight: 700;
-    letter-spacing: 3px;
-    margin: 10px 0 22px;
+
+    letter-spacing: 4px;
+
+    margin: 8px 0 26px;
+
+    font-family: monospace;
 }
 
 
-/* ---------- QUICK ACTION ---------- */
+/* email */
+
+.account-email {
+    font-size: 15px;
+
+    margin-top: 7px;
+
+    margin-bottom: 25px;
+
+    color: rgba(255,255,255,0.92);
+}
+
+
+/* balance */
+
+.account-balance {
+    font-size: 30px !important;
+
+    margin-top: 7px !important;
+
+    margin-bottom: 0 !important;
+}
+
+
+/* welcome card */
+
+.welcome-title {
+    font-size: 27px;
+
+    margin-bottom: 22px !important;
+}
+
+
+/* warning */
+
+.account-warning {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    background: rgba(251,191,36,0.12);
+
+    border: 1px solid rgba(251,191,36,0.25);
+
+    color: #fde68a !important;
+
+    font-size: 12px !important;
+
+    letter-spacing: 0 !important;
+}
+
+
+/* =========================================================
+   QUICK ACTION
+   ========================================================= */
 
 .quick-card {
     background: white;
+
     padding: 25px;
+
     border-radius: 18px;
+
     border: 1px solid #e2e8f0;
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+
+    box-shadow:
+        0 6px 20px rgba(15, 23, 42, 0.06);
 }
 
 
-/* ---------- FOOTER ---------- */
-
-.footer {
-    text-align: center;
-    color: #64748b;
-    padding: 35px 10px;
-    margin-top: 50px;
-    border-top: 1px solid #e2e8f0;
-}
-
-
-/* ---------- BUTTON ---------- */
-
-.stButton > button,
-.stFormSubmitButton > button {
-    border-radius: 10px;
-    font-weight: 600;
-}
-
-
-/* ---------- INPUTS ---------- */
-
-div[data-baseweb="input"] {
-    border-radius: 10px;
-}
-
-
-/* ---------- METRICS ---------- */
+/* =========================================================
+   METRICS
+   ========================================================= */
 
 div[data-testid="stMetric"] {
     background: white;
+
     padding: 20px;
-    border-radius: 16px;
+
+    border-radius: 18px;
+
     border: 1px solid #e2e8f0;
+
+    box-shadow:
+        0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+div[data-testid="stMetric"] label {
+    color: #64748b;
+}
+
+div[data-testid="stMetricValue"] {
+    color: #0f172a;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.stButton > button,
+.stFormSubmitButton > button {
+
+    border-radius: 12px;
+
+    min-height: 45px;
+
+    font-weight: 700;
+
+    border: none;
+
+    transition: 0.2s ease;
+}
+
+.stButton > button:hover,
+.stFormSubmitButton > button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(37,99,235,0.20);
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+div[data-baseweb="input"] {
+    border-radius: 11px;
+}
+
+div[data-baseweb="select"] {
+    border-radius: 11px;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+[data-testid="stForm"] {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    text-align: center;
+
+    color: #64748b;
+
+    padding: 40px 10px 20px;
+
+    margin-top: 60px;
+
+    border-top: 1px solid #e2e8f0;
+}
+
+.footer h2 {
+    color: #0f172a;
+    margin-bottom: 5px;
+}
+
+.footer p {
+    margin: 5px;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+   ========================================================= */
+
+div[data-testid="stAlert"] {
+    border-radius: 12px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .account-number {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
 }
 
 </style>
@@ -204,9 +501,17 @@ bank = Bank()
 
 st.markdown("""
 <div class="hero">
+
     <h1>🏦 NovaBank</h1>
-    <p>Smart • Secure • Simple Banking Management System</p>
-    <span>Python • Streamlit • JSON</span>
+
+    <p>
+        Smart • Secure • Simple Banking Management System
+    </p>
+
+    <span>
+        Python • Streamlit • JSON
+    </span>
+
 </div>
 """, unsafe_allow_html=True)
 
@@ -261,20 +566,22 @@ if option == "🏠 Home":
         unsafe_allow_html=True
     )
 
-    # FEATURE CARDS
-
     col1, col2, col3 = st.columns(3)
 
     with col1:
 
         st.markdown("""
         <div class="card">
+
             <h2>🔐</h2>
+
             <h3>Secure</h3>
+
             <p>
                 Account number and PIN authentication
                 keeps your banking information protected.
             </p>
+
         </div>
         """, unsafe_allow_html=True)
 
@@ -282,12 +589,16 @@ if option == "🏠 Home":
 
         st.markdown("""
         <div class="card">
+
             <h2>💰</h2>
+
             <h3>Easy Banking</h3>
+
             <p>
                 Deposit and withdraw money using
                 simple and user-friendly controls.
             </p>
+
         </div>
         """, unsafe_allow_html=True)
 
@@ -295,12 +606,16 @@ if option == "🏠 Home":
 
         st.markdown("""
         <div class="card">
+
             <h2>⚡</h2>
+
             <h3>Fast Management</h3>
+
             <p>
                 Create, update, view and manage
                 your account from one dashboard.
             </p>
+
         </div>
         """, unsafe_allow_html=True)
 
@@ -420,19 +735,27 @@ elif option == "📝 Create Account":
 
                         <small>ACCOUNT CREATED</small>
 
-                        <h2>Welcome, {name} 👋</h2>
+                        <h2 class="welcome-title">
+                            Welcome, {name} 👋
+                        </h2>
 
-                        <small>YOUR ACCOUNT NUMBER</small>
+                        <small>
+                            YOUR ACCOUNT NUMBER
+                        </small>
 
                         <div class="account-number">
                             {result}
                         </div>
 
-                        <small>INITIAL BALANCE</small>
-
-                        <h2>₹0.00</h2>
-
                         <small>
+                            INITIAL BALANCE
+                        </small>
+
+                        <h2 class="account-balance">
+                            ₹0.00
+                        </h2>
+
+                        <small class="account-warning">
                             ⚠️ Please save your account number safely.
                         </small>
 
@@ -444,7 +767,6 @@ elif option == "📝 Create Account":
             else:
 
                 st.error(result)
-            
 
 
 # =========================================================
@@ -648,7 +970,9 @@ elif option == "👤 Account Details":
 
             if user:
 
-                st.success("✅ Account verified successfully!")
+                st.success(
+                    "✅ Account verified successfully!"
+                )
 
                 col1, col2, col3 = st.columns(3)
 
@@ -678,19 +1002,34 @@ elif option == "👤 Account Details":
                     <div class="account-card">
 
                         <small>ACCOUNT HOLDER</small>
-                        <h2>{user['name']}</h2>
 
-                        <small>ACCOUNT NUMBER</small>
+                        <h2>
+                            {user['name']}
+                        </h2>
+
+                        <small>
+                            ACCOUNT NUMBER
+                        </small>
 
                         <div class="account-number">
                             {user['account no.']}
                         </div>
 
-                        <small>EMAIL</small>
-                        <p>{user['email']}</p>
+                        <small>
+                            EMAIL
+                        </small>
 
-                        <small>AVAILABLE BALANCE</small>
-                        <h2>₹{user['balance']:,.2f}</h2>
+                        <p class="account-email">
+                            {user['email']}
+                        </p>
+
+                        <small>
+                            AVAILABLE BALANCE
+                        </small>
+
+                        <h2 class="account-balance">
+                            ₹{user['balance']:,.2f}
+                        </h2>
 
                     </div>
                     """,
@@ -782,9 +1121,15 @@ elif option == "✏️ Update Details":
             success, message = bank.update_details(
                 account_number=account_number.strip(),
                 pin=int(pin),
-                name=new_name.strip() if new_name.strip() else None,
-                email=new_email.strip() if new_email.strip() else None,
-                new_pin=int(new_pin) if new_pin else None
+                name=new_name.strip()
+                if new_name.strip()
+                else None,
+                email=new_email.strip()
+                if new_email.strip()
+                else None,
+                new_pin=int(new_pin)
+                if new_pin
+                else None
             )
 
             if success:
@@ -841,7 +1186,11 @@ elif option == "🗑️ Delete Account":
 
     if submitted:
 
-        if not confirmation:
+        if not account_number.strip():
+
+            st.error("Please enter account number.")
+
+        elif not confirmation:
 
             st.error(
                 "Please confirm account deletion."
@@ -879,17 +1228,21 @@ elif option == "🗑️ Delete Account":
 
 st.markdown("""
 <div class="footer">
-<h1>🏦 NovaBank</h1> 
- 
-<p> 
-    Smart • Secure • Simple Banking Management System 
-</p> <b>NovaBank</b> 
- 
-<br> 
- 
-Python • Streamlit • JSON
 
-    Secure Banking Management System © 2026
+    <h2>🏦 NovaBank</h2>
+
+    <p>
+        Smart • Secure • Simple Banking Management System
+    </p>
+
+    <p>
+        Python • Streamlit • JSON
+    </p>
+
+    <p>
+        🔐 Secure Banking Management System © 2026
+    </p>
 
 </div>
 """, unsafe_allow_html=True)
+
