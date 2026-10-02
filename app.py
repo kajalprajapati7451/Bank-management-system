@@ -675,24 +675,33 @@ elif option == "👤 Account Details":
 
                 st.markdown(
                     f"""
-                    <div class="account-card">
+                     <div class="account-card">
 
-                        <small>ACCOUNT HOLDER</small>
-                        <h2>{user['name']}</h2>
+        <small>ACCOUNT HOLDER</small>
 
-                        <small>ACCOUNT NUMBER</small>
+        <h2>
+            {user['name']}
+        </h2>
 
-                        <div class="account-number">
-                            {user['account no.']}
-                        </div>
+        <small>ACCOUNT NUMBER</small>
 
-                        <small>EMAIL</small>
-                        <p>{user['email']}</p>
+        <div class="account-number">
+            {user['account no.']}
+        </div>
 
-                        <small>AVAILABLE BALANCE</small>
-                        <h2>₹{user['balance']:,.2f}</h2>
+        <small>EMAIL</small>
 
-                    </div>
+        <p>
+            📧 {user['email']}
+        </p>
+
+        <small>AVAILABLE BALANCE</small>
+
+        <h2>
+            ₹{user['balance']:,.2f}
+        </h2>
+
+    </div>
                     """,
                     unsafe_allow_html=True
                 )
