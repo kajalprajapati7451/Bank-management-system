@@ -31,37 +31,54 @@ class Bank:
             json.dump(self.data, fs, indent=4)
 
     # ---------------- GENERATE ACCOUNT NUMBER ----------------
-@staticmethod
-def account_generate():
+    @staticmethod
+    def account_generate():
 
-     while True:
+        while True:
 
-        alphabets = random.choices(string.ascii_uppercase, k=3)
-        numbers = random.choices(string.digits, k=3)
-        special = random.choices("!@#$%^&*", k=3)
+            alphabets = random.choices(
+                string.ascii_uppercase,
+                k=3
+            )
 
-        account = alphabets + numbers + special
+            numbers = random.choices(
+                string.digits,
+                k=3
+            )
 
-        random.shuffle(account)
+            special = random.choices(
+                "!@#$%^&*",
+                k=3
+            )
 
-        account_number = "".join(account)
+            account = alphabets + numbers + special
 
-        if not Path("data.json").exists():
-            return account_number
+            random.shuffle(account)
 
-        try:
-            with open("data.json", "r", encoding="utf-8") as fs:
-                data = json.load(fs)
-        except:
-            data = []
+            account_number = "".join(account)
 
-        if not any(
-            user["account no."] == account_number
-            for user in data
-        ):
-            return account_number
+            if not Path("data.json").exists():
+                return account_number
+
+            try:
+                with open(
+                    "data.json",
+                    "r",
+                    encoding="utf-8"
+                ) as fs:
+                    data = json.load(fs)
+
+            except (json.JSONDecodeError, FileNotFoundError):
+                data = []
+
+            if not any(
+                user["account no."] == account_number
+                for user in data
+            ):
+                return account_number
+
     # ---------------- FIND ACCOUNT ----------------
-def find_account(self, account_number, pin):
+    def find_account(self, account_number, pin):
 
         for user in self.data:
 
@@ -74,7 +91,7 @@ def find_account(self, account_number, pin):
         return None
 
     # ---------------- CREATE ACCOUNT ----------------
-def create_account(self, name, age, email, pin):
+    def create_account(self, name, age, email, pin):
 
         if not name:
             return False, "Name cannot be empty."
@@ -100,14 +117,18 @@ def create_account(self, name, age, email, pin):
         }
 
         self.data.append(info)
+
         self.update()
 
         return True, account_number
 
     # ---------------- DEPOSIT MONEY ----------------
-def deposit_money(self, account_number, pin, amount):
+    def deposit_money(self, account_number, pin, amount):
 
-        user = self.find_account(account_number, pin)
+        user = self.find_account(
+            account_number,
+            pin
+        )
 
         if not user:
             return False, "Invalid account number or PIN."
@@ -125,9 +146,12 @@ def deposit_money(self, account_number, pin, amount):
         return True, f"₹{amount} deposited successfully."
 
     # ---------------- WITHDRAW MONEY ----------------
-def withdraw_money(self, account_number, pin, amount):
+    def withdraw_money(self, account_number, pin, amount):
 
-        user = self.find_account(account_number, pin)
+        user = self.find_account(
+            account_number,
+            pin
+        )
 
         if not user:
             return False, "Invalid account number or PIN."
@@ -145,9 +169,12 @@ def withdraw_money(self, account_number, pin, amount):
         return True, f"₹{amount} withdrawn successfully."
 
     # ---------------- SHOW DETAILS ----------------
-def show_details(self, account_number, pin):
+    def show_details(self, account_number, pin):
 
-        user = self.find_account(account_number, pin)
+        user = self.find_account(
+            account_number,
+            pin
+        )
 
         if not user:
             return None
@@ -155,7 +182,7 @@ def show_details(self, account_number, pin):
         return user
 
     # ---------------- UPDATE DETAILS ----------------
-def update_details(
+    def update_details(
         self,
         account_number,
         pin,
@@ -164,7 +191,10 @@ def update_details(
         new_pin=None
     ):
 
-        user = self.find_account(account_number, pin)
+        user = self.find_account(
+            account_number,
+            pin
+        )
 
         if not user:
             return False, "Invalid account number or PIN."
@@ -187,15 +217,21 @@ def update_details(
         return True, "Details updated successfully."
 
     # ---------------- DELETE ACCOUNT ----------------
-def delete_account(self, account_number, pin):
+    def delete_account(self, account_number, pin):
 
-        user = self.find_account(account_number, pin)
+        user = self.find_account(
+            account_number,
+            pin
+        )
 
         if not user:
             return False, "Invalid account number or PIN."
 
         if user["balance"] > 0:
-            return False, "Please withdraw your remaining balance before deleting the account."
+            return False, (
+                "Please withdraw your remaining balance "
+                "before deleting the account."
+            )
 
         self.data.remove(user)
 
