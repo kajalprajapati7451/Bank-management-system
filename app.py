@@ -444,9 +444,7 @@ elif option == "📝 Create Account":
             else:
 
                 st.error(result)
-            else:
-
-                st.error(result)
+            
 
 
 # =========================================================
