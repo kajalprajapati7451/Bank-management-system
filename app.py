@@ -132,6 +132,11 @@ section[data-testid="stSidebar"] * {
     margin-top: 8px;
 }
 
+.account-card p {
+    color: white;
+    opacity: 0.9;
+}
+
 .account-number {
     font-size: 29px;
     font-weight: 700;
@@ -260,8 +265,6 @@ if option == "🏠 Home":
         '</div>',
         unsafe_allow_html=True
     )
-
-    # FEATURE CARDS
 
     col1, col2, col3 = st.columns(3)
 
@@ -408,7 +411,7 @@ elif option == "📝 Create Account":
                 pin=int(pin)
             )
 
-                       if success:
+            if success:
 
                 st.success(
                     "🎉 Account created successfully!"
@@ -441,9 +444,6 @@ elif option == "📝 Create Account":
                     unsafe_allow_html=True
                 )
 
-            else:
-
-                st.error(result)
             else:
 
                 st.error(result)
@@ -650,7 +650,9 @@ elif option == "👤 Account Details":
 
             if user:
 
-                st.success("✅ Account verified successfully!")
+                st.success(
+                    "✅ Account verified successfully!"
+                )
 
                 col1, col2, col3 = st.columns(3)
 
@@ -849,6 +851,12 @@ elif option == "🗑️ Delete Account":
                 "Please confirm account deletion."
             )
 
+        elif not account_number.strip():
+
+            st.error(
+                "Please enter account number."
+            )
+
         elif not pin.isdigit() or len(pin) != 4:
 
             st.error(
@@ -881,17 +889,18 @@ elif option == "🗑️ Delete Account":
 
 st.markdown("""
 <div class="footer">
-<h1>🏦 NovaBank</h1> 
- 
-<p> 
-    Smart • Secure • Simple Banking Management System 
-</p> <b>NovaBank</b> 
- 
-<br> 
- 
-Python • Streamlit • JSON
 
-    Secure Banking Management System © 2026
+    <h1>🏦 NovaBank</h1>
+
+    <p>
+        Smart • Secure • Simple Banking Management System
+    </p>
+
+    <b>Python • Streamlit • JSON</b>
+
+    <p>
+        Secure Banking Management System © 2026
+    </p>
 
 </div>
 """, unsafe_allow_html=True)
